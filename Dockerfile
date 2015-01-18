@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 MAINTAINER Adam Crow <adamcrow63@gmail.com>
 
-ENV MYSQL_HOST localhost
+ENV MYSQL_HOST 127.0.0.1 
 ENV MYSQL_PORT 3306
 ENV MYSQL_DBNAME pdns
 ENV MYSQL_DBUSER pdns
@@ -14,7 +14,7 @@ ENV ALLOW_RECURSION_MASK 0.0.0.0\/0
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update -q -q && \
- apt-get install pdns-server pdns-backend-mysql --yes --force-yes && \
+ apt-get install pdns-server  --yes --force-yes && \
  echo 'bind-check-interval=3600' >> /etc/powerdns/pdns.d/pdns.simplebind
 RUN apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
