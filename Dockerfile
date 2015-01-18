@@ -18,7 +18,6 @@ RUN apt-get update -q -q && \
  echo 'bind-check-interval=3600' >> /etc/powerdns/pdns.d/pdns.simplebind
 RUN apt-get clean && rm -rf /tmp/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY ./etc /etc
 COPY entrypoint.sh /entrypoint.sh
 
 CMD ["/etc/init.d/pdns", "monitor"]
